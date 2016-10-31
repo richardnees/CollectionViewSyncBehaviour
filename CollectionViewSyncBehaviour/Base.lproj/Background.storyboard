@@ -47,9 +47,6 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfy-VK-VjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="7Gs-1E-wss" customClass="SynchronizedScrollingBehavior" customModule="CollectionViewSyncBehaviour" customModuleProvider="target">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="fastScrolling" value="NO"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="collectionView" destination="vyb-rT-PCU" id="T3E-ya-UaQ"/>
                     </connections>

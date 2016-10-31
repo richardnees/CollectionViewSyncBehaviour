@@ -47,13 +47,14 @@
                             <constraint firstAttribute="trailing" secondItem="PTh-5T-lxw" secondAttribute="trailing" id="8NF-ZW-tmo"/>
                             <constraint firstItem="PTh-5T-lxw" firstAttribute="top" secondItem="YZP-9Y-416" secondAttribute="bottom" id="Cuy-Vq-eCX"/>
                             <constraint firstItem="PTh-5T-lxw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="HOA-fc-jUe"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PTh-5T-lxw" secondAttribute="bottom" constant="10" id="MS0-Ql-n7G"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="BhM-CU-Geg" secondAttribute="bottom" id="XTg-6e-TYi"/>
                             <constraint firstAttribute="trailing" secondItem="YZP-9Y-416" secondAttribute="trailing" id="ZbL-sZ-I2p"/>
                             <constraint firstAttribute="trailing" secondItem="BhM-CU-Geg" secondAttribute="trailing" id="aoB-Qo-EKa"/>
                             <constraint firstItem="BhM-CU-Geg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="d7k-iv-98b"/>
                             <constraint firstItem="BhM-CU-Geg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="i5N-Th-JTG"/>
                             <constraint firstItem="YZP-9Y-416" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="j33-a9-nJO"/>
-                            <constraint firstItem="YZP-9Y-416" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="laD-Lf-FQ4"/>
+                            <constraint firstItem="YZP-9Y-416" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" priority="999" id="laD-Lf-FQ4"/>
                         </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>

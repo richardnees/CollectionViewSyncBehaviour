@@ -72,14 +72,22 @@ class IconCollectionViewController: UICollectionViewController {
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         collectionViewLayout.invalidateLayout()
+        
+        if let selectedIndexPath = collectionView?.indexPathsForSelectedItems()?.first {
+            coordinator.animateAlongsideTransition({ (context) in
+                
+            }) { (context) in
+                self.collectionView?.scrollToItemAtIndexPath(selectedIndexPath, atScrollPosition: .CenteredHorizontally, animated: false)
+                self.synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidScroll(self.synchronizedScrollingBehavior.collectionView)
+            }
+        }
     }
-
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
-
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return lines.count
