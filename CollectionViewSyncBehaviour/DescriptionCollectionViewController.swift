@@ -4,32 +4,68 @@ private let reuseIdentifier = "DescriptionCollectionViewCell"
 
 class DescriptionCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
+    
+    var line: UBahnLine? {
+        didSet {
+            layer.shadowOpacity = 0.5
+            layer.shadowOffset = CGSize(width: 2, height: 0)
+            layer.cornerRadius = 10.0
+            layer.borderColor = UIColor.blackColor().CGColor
+            layer.borderWidth = 1.0
+            
+            if let line = line {
+                backgroundColor = line.color
+                titleLabel.text = "\(line.route.0)\n⇆\n\(line.route.1)"
+                titleLabel.textColor = line.textColor
+            }
+        }
+    }
+}
+
+extension DescriptionCollectionViewController: HasSynchronizedScrolling {
+    var behavior: SynchronizedScrollingBehavior {
+        return synchronizedScrollingBehavior
+    }
+}
+
+extension DescriptionCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGRectInset(collectionView.bounds, 10, 10).size
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        var inset = UIEdgeInsetsZero
+        let horizontalInset: CGFloat = 10.0
+        inset.left = horizontalInset
+        inset.right = horizontalInset
+        return inset
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 200
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
+    }
 }
 
 class DescriptionCollectionViewController: UICollectionViewController {
 
+    @IBOutlet var synchronizedScrollingBehavior: SynchronizedScrollingBehavior!
+
     var lines = UBahnLine.all
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if
-            let collectionView = collectionView,
-            let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
-            
-            collectionView.decelerationRate = UIScrollViewDecelerationRateFast
-            
-            flowLayout.itemSize = CGRectInset(collectionView.bounds, 10, 10).size
-            flowLayout.minimumInteritemSpacing = 0
-            flowLayout.minimumLineSpacing = 200
-            
-            let horizontalInset: CGFloat = 10.0
-            flowLayout.sectionInset.left = horizontalInset
-            flowLayout.sectionInset.right = horizontalInset
-            flowLayout.invalidateLayout()
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView?.decelerationRate = UIScrollViewDecelerationRateFast
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        collectionViewLayout.invalidateLayout()
+    }
+
     // MARK: UICollectionViewDataSource
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -48,21 +84,13 @@ class DescriptionCollectionViewController: UICollectionViewController {
     }
     
     func configure(cell: DescriptionCollectionViewCell, indexPath: NSIndexPath) {
-        cell.backgroundColor = lines[indexPath.row].color
-        cell.layer.shadowOpacity = 0.5
-        cell.layer.shadowOffset = CGSize(width: 2, height: 0)
-        cell.layer.cornerRadius = 10.0
-        cell.layer.borderColor = UIColor.blackColor().CGColor
-        cell.layer.borderWidth = 1.0
-
-        cell.titleLabel.text = "\(lines[indexPath.row].route.0)\n⇆\n\(lines[indexPath.row].route.1)"
-        cell.titleLabel.textColor = lines[indexPath.row].textColor
+        cell.line = lines[indexPath.row]
     }
     
     // MARK: UIScrollViewDelegate
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
-        coordinator.syncronizedCollectionViewDidScroll(syncronizedCollectionView)
+        synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidScroll(synchronizedScrollingBehavior.collectionView)
     }
 }
 

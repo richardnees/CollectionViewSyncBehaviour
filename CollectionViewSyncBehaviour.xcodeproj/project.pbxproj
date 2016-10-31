@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		950D2E341DC376DD009CFF2A /* SyncronizedScrollingBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D2E331DC376DD009CFF2A /* SyncronizedScrollingBehavior.swift */; };
+		950D2E341DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D2E331DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift */; };
 		9592128D1DC225F300C65F0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592128C1DC225F300C65F0E /* AppDelegate.swift */; };
 		9592128F1DC225F300C65F0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592128E1DC225F300C65F0E /* ViewController.swift */; };
 		959212921DC225F400C65F0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959212901DC225F400C65F0E /* Main.storyboard */; };
@@ -17,7 +17,7 @@
 		959212AD1DC2389F00C65F0E /* BackgroundCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959212AC1DC2389F00C65F0E /* BackgroundCollectionViewController.swift */; };
 		959212AF1DC238B200C65F0E /* IconCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959212AE1DC238B200C65F0E /* IconCollectionViewController.swift */; };
 		959212B11DC2514900C65F0E /* CenterCellCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959212B01DC2514900C65F0E /* CenterCellCollectionViewFlowLayout.swift */; };
-		95B95FD11DC76F3C00B116C4 /* SyncronizedScrollingCoordinationBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B95FD01DC76F3C00B116C4 /* SyncronizedScrollingCoordinationBehavior.swift */; };
+		95B95FD11DC76F3C00B116C4 /* SynchronizedScrollingCoordinationBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B95FD01DC76F3C00B116C4 /* SynchronizedScrollingCoordinationBehavior.swift */; };
 		95DDA5001DC73F3800AFD5DB /* UBahnLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DDA4FF1DC73F3800AFD5DB /* UBahnLine.swift */; };
 		95DDA5031DC7533300AFD5DB /* Description.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95DDA5011DC7533300AFD5DB /* Description.storyboard */; };
 		95DDA5051DC753D600AFD5DB /* Icon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95DDA5041DC753D600AFD5DB /* Icon.storyboard */; };
@@ -36,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		950D2E331DC376DD009CFF2A /* SyncronizedScrollingBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncronizedScrollingBehavior.swift; sourceTree = "<group>"; };
+		950D2E331DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedScrollingBehavior.swift; sourceTree = "<group>"; };
 		959212891DC225F300C65F0E /* CollectionViewSyncBehaviour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewSyncBehaviour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9592128C1DC225F300C65F0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9592128E1DC225F300C65F0E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		959212AC1DC2389F00C65F0E /* BackgroundCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundCollectionViewController.swift; sourceTree = "<group>"; };
 		959212AE1DC238B200C65F0E /* IconCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCollectionViewController.swift; sourceTree = "<group>"; };
 		959212B01DC2514900C65F0E /* CenterCellCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCellCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		95B95FD01DC76F3C00B116C4 /* SyncronizedScrollingCoordinationBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncronizedScrollingCoordinationBehavior.swift; sourceTree = "<group>"; };
+		95B95FD01DC76F3C00B116C4 /* SynchronizedScrollingCoordinationBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedScrollingCoordinationBehavior.swift; sourceTree = "<group>"; };
 		95DDA4FF1DC73F3800AFD5DB /* UBahnLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UBahnLine.swift; sourceTree = "<group>"; };
 		95DDA5021DC7533300AFD5DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Description.storyboard; sourceTree = "<group>"; };
 		95DDA5041DC753D600AFD5DB /* Icon.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Icon.storyboard; sourceTree = "<group>"; };
@@ -100,8 +100,8 @@
 				9592128C1DC225F300C65F0E /* AppDelegate.swift */,
 				95DDA4FF1DC73F3800AFD5DB /* UBahnLine.swift */,
 				959212B01DC2514900C65F0E /* CenterCellCollectionViewFlowLayout.swift */,
-				950D2E331DC376DD009CFF2A /* SyncronizedScrollingBehavior.swift */,
-				95B95FD01DC76F3C00B116C4 /* SyncronizedScrollingCoordinationBehavior.swift */,
+				950D2E331DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift */,
+				95B95FD01DC76F3C00B116C4 /* SynchronizedScrollingCoordinationBehavior.swift */,
 				9592128E1DC225F300C65F0E /* ViewController.swift */,
 				959212901DC225F400C65F0E /* Main.storyboard */,
 				95DDA5061DC754FD00AFD5DB /* Background.storyboard */,
@@ -231,11 +231,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95B95FD11DC76F3C00B116C4 /* SyncronizedScrollingCoordinationBehavior.swift in Sources */,
+				95B95FD11DC76F3C00B116C4 /* SynchronizedScrollingCoordinationBehavior.swift in Sources */,
 				95DDA5001DC73F3800AFD5DB /* UBahnLine.swift in Sources */,
 				959212B11DC2514900C65F0E /* CenterCellCollectionViewFlowLayout.swift in Sources */,
 				9592128F1DC225F300C65F0E /* ViewController.swift in Sources */,
-				950D2E341DC376DD009CFF2A /* SyncronizedScrollingBehavior.swift in Sources */,
+				950D2E341DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift in Sources */,
 				959212AF1DC238B200C65F0E /* IconCollectionViewController.swift in Sources */,
 				95F88D8A1DC33A6F004B6EDA /* DescriptionCollectionViewController.swift in Sources */,
 				959212AD1DC2389F00C65F0E /* BackgroundCollectionViewController.swift in Sources */,

@@ -58,8 +58,12 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="coordinationBehavior" destination="ZDV-lh-wor" id="dts-yK-vWm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="ZDV-lh-wor" customClass="SynchronizedScrollingCoordinationBehavior" customModule="CollectionViewSyncBehaviour" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="301" y="360"/>
         </scene>

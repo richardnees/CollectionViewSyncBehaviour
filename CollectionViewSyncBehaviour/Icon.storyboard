@@ -10,7 +10,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="IconCollectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Zw-uf-uwB" customClass="IconCollectionViewController" customModule="CollectionViewSyncBehaviour" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="3Q0-PS-9mm">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="I4k-fs-ve2" customClass="CenterCellCollectionViewFlowLayout" customModule="CollectionViewSyncBehaviour" customModuleProvider="target">
@@ -21,7 +21,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IconCollectionViewCell" id="dmm-w5-Tuu" customClass="IconCollectionViewCell" customModule="CollectionViewSyncBehaviour" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="40" width="120" height="120"/>
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
@@ -52,12 +52,16 @@
                         </connections>
                     </collectionView>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <fixedSimulatedSizeMetrics key="simulatedDestinationMetrics">
-                        <size key="portraitSize" width="600" height="200"/>
-                        <size key="landscapeSize" width="200" height="600"/>
-                    </fixedSimulatedSizeMetrics>
+                    <connections>
+                        <outlet property="synchronizedScrollingBehavior" destination="iUz-B0-Bst" id="pI8-Qa-kLU"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QnZ-dM-Dp4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="iUz-B0-Bst" customClass="SynchronizedScrollingBehavior" customModule="CollectionViewSyncBehaviour" customModuleProvider="target">
+                    <connections>
+                        <outlet property="collectionView" destination="3Q0-PS-9mm" id="ZEj-DM-ZrY"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1020" y="667"/>
         </scene>

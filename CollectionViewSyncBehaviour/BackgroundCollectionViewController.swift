@@ -6,24 +6,44 @@ class BackgroundCollectionViewCell: UICollectionViewCell {
     
 }
 
+extension BackgroundCollectionViewController: HasSynchronizedScrolling {
+    var behavior: SynchronizedScrollingBehavior {
+        return synchronizedScrollingBehavior
+    }
+}
+
+extension BackgroundCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return collectionView.bounds.size
+    }
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsZero
+    }
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
+    }
+
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
+    }
+}
+
 class BackgroundCollectionViewController: UICollectionViewController {
+    
+    @IBOutlet var synchronizedScrollingBehavior: SynchronizedScrollingBehavior!
     
     var lines = UBahnLine.all
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if
-            let collectionView = collectionView,
-            let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
-            
-            collectionView.decelerationRate = UIScrollViewDecelerationRateFast
-            
-            flowLayout.itemSize = collectionView.bounds.size
-            flowLayout.minimumInteritemSpacing = 0
-            flowLayout.minimumLineSpacing = 0
-            flowLayout.sectionInset = UIEdgeInsetsZero
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView?.decelerationRate = UIScrollViewDecelerationRateFast
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        collectionViewLayout.invalidateLayout()
     }
     
     // MARK: UICollectionViewDataSource
@@ -31,7 +51,6 @@ class BackgroundCollectionViewController: UICollectionViewController {
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
-    
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return lines.count
@@ -50,6 +69,6 @@ class BackgroundCollectionViewController: UICollectionViewController {
     // MARK: UIScrollViewDelegate
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
-        coordinator.syncronizedCollectionViewDidScroll(syncronizedCollectionView)
+        synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidScroll(synchronizedScrollingBehavior.collectionView)
     }
 }

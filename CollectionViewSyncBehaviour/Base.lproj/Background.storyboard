@@ -41,8 +41,19 @@
                         <size key="portraitSize" width="600" height="580"/>
                         <size key="landscapeSize" width="580" height="600"/>
                     </fixedSimulatedSizeMetrics>
+                    <connections>
+                        <outlet property="synchronizedScrollingBehavior" destination="7Gs-1E-wss" id="KYw-bm-I7A"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfy-VK-VjT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="7Gs-1E-wss" customClass="SynchronizedScrollingBehavior" customModule="CollectionViewSyncBehaviour" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="fastScrolling" value="NO"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="collectionView" destination="vyb-rT-PCU" id="T3E-ya-UaQ"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1020" y="185"/>
         </scene>

@@ -12,31 +12,68 @@ private let reuseIdentifier = "IconCollectionViewCell"
 
 class IconCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
+    
+    var line: UBahnLine? {
+        didSet {
+            layer.shadowOpacity = 0.5
+            layer.shadowOffset = CGSize(width: 2, height: 0)
+            layer.cornerRadius = 10.0
+            layer.borderColor = UIColor.blackColor().CGColor
+            layer.borderWidth = 1.0
+
+            if let line = line {
+                backgroundColor = line.color
+                titleLabel.text = line.name
+                titleLabel.textColor = line.textColor
+            }
+        }
+    }
+}
+
+extension IconCollectionViewController: HasSynchronizedScrolling {
+    var behavior: SynchronizedScrollingBehavior {
+        return synchronizedScrollingBehavior
+    }
+}
+
+extension IconCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: 120.0, height: 120.0)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        var inset = UIEdgeInsetsZero
+        let horizontalInset = collectionView.bounds.width/2 - 60.0
+        inset.left = horizontalInset
+        inset.right = horizontalInset
+        return inset
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 50
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 0
+    }
 }
 
 class IconCollectionViewController: UICollectionViewController {
     
+    @IBOutlet var synchronizedScrollingBehavior: SynchronizedScrollingBehavior!
+
     var lines = UBahnLine.all
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if
-            let collectionView = collectionView,
-            let flowLayout = collectionViewLayout as? CenterCellCollectionViewFlowLayout {
-            
-            collectionView.decelerationRate = UIScrollViewDecelerationRateFast
-            
-            flowLayout.itemSize = CGSize(width: 120.0, height: 120.0)
-            flowLayout.minimumInteritemSpacing = 0
-            flowLayout.minimumLineSpacing = 50
-            
-            let horizontalInset = collectionView.bounds.width/2 - 60.0
-            flowLayout.sectionInset.left = horizontalInset
-            flowLayout.sectionInset.right = horizontalInset
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        collectionView?.decelerationRate = UIScrollViewDecelerationRateFast
     }
     
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        collectionViewLayout.invalidateLayout()
+    }
+
     // MARK: UICollectionViewDataSource
 
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -55,15 +92,7 @@ class IconCollectionViewController: UICollectionViewController {
     }
     
     func configure(cell: IconCollectionViewCell, indexPath: NSIndexPath) {
-        cell.backgroundColor = lines[indexPath.row].color
-        cell.layer.shadowOpacity = 0.5
-        cell.layer.shadowOffset = CGSize(width: 2, height: 0)
-        cell.layer.cornerRadius = 10.0
-        cell.layer.borderColor = UIColor.blackColor().CGColor
-        cell.layer.borderWidth = 1.0
-        
-        cell.titleLabel.text = lines[indexPath.row].name
-        cell.titleLabel.textColor = lines[indexPath.row].textColor
+        cell.line = lines[indexPath.row]
     }
 
     // MARK: UICollectionViewDelegate
@@ -75,7 +104,7 @@ class IconCollectionViewController: UICollectionViewController {
     // MARK: UIScrollViewDelegate
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
-        coordinator.syncronizedCollectionViewDidScroll(syncronizedCollectionView)
+        synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidScroll(synchronizedScrollingBehavior.collectionView)
     }
 }
 

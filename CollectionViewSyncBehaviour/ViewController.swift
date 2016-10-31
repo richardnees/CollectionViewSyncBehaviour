@@ -8,7 +8,7 @@ enum SegueIdentifier: String {
 
 class ViewController: UIViewController {
 
-    var synchonizedCollectionViewsControllers: [SyncronizedScrollable] = []
+    @IBOutlet var coordinationBehavior: SynchronizedScrollingCoordinationBehavior!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        print(synchonizedCollectionViewsControllers)
+        print(coordinationBehavior.behaviors)
     }
     
     override func didReceiveMemoryWarning() {
@@ -27,25 +27,8 @@ class ViewController: UIViewController {
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {        
-        if let synchonizedCollectionViewController = segue.destinationViewController as? SyncronizedScrollable {
-            synchonizedCollectionViewsControllers.append(synchonizedCollectionViewController)
+        if let synchonizedCollectionViewController = segue.destinationViewController as? HasSynchronizedScrolling {
+            coordinationBehavior.append(synchonizedCollectionViewController.behavior)
         }
     }
 }
-
-extension ViewController: SyncronizedScrollingCoordination {
-    
-    var viewController: UIViewController {
-        return self
-    }
-    
-    func syncronizedCollectionViewDidScroll(collectionView: UICollectionView) {
-        
-        let otherCollectionViews = synchonizedCollectionViewsControllers.map { $0.syncronizedCollectionView }.filter { $0 != collectionView }
-        otherCollectionViews.forEach { otherCollectionView in
-            let ratio = (otherCollectionView.contentSize.width - otherCollectionView.bounds.width) / (collectionView.contentSize.width - collectionView.bounds.width)
-            otherCollectionView.contentOffset.x = (collectionView.contentOffset.x * ratio)
-        }
-    }
-}
-

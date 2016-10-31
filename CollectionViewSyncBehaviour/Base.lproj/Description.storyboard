@@ -54,8 +54,16 @@
                         </connections>
                     </collectionView>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="synchronizedScrollingBehavior" destination="ZGc-R2-wKV" id="upQ-ah-blk"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HYT-Gt-zBs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="ZGc-R2-wKV" customClass="SynchronizedScrollingBehavior" customModule="CollectionViewSyncBehaviour" customModuleProvider="target">
+                    <connections>
+                        <outlet property="collectionView" destination="LKu-Jc-WWM" id="iho-DM-hSp"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="829" y="906"/>
         </scene>
