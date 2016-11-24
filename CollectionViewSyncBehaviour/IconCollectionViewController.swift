@@ -1,11 +1,3 @@
-//
-//  IconCollectionViewController.swift
-//  CollectionViewSyncBehaviour
-//
-//  Created by Richard Nees on 27/10/2016.
-//  Copyright © 2016 VIMN. All rights reserved.
-//
-
 import UIKit
 
 final class IconCollectionViewCell: UICollectionViewCell {
