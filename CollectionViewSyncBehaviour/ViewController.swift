@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print(coordinationBehavior.behaviors)
     }
@@ -26,8 +26,8 @@ class ViewController: UIViewController {
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {        
-        if let synchonizedCollectionViewController = segue.destinationViewController as? HasSynchronizedScrolling {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {        
+        if let synchonizedCollectionViewController = segue.destination as? HasSynchronizedScrolling {
             coordinationBehavior.behaviors.append(synchonizedCollectionViewController.behavior)
         }
     }

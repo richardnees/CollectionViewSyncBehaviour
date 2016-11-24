@@ -2,7 +2,7 @@ import UIKit
 
 class CenterCellCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
-    override func targetContentOffsetForProposedContentOffset(proposedContentOffset: CGPoint,
+    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint,
                                                               withScrollingVelocity velocity: CGPoint) -> CGPoint {
         if let collectionView = collectionView {
             
@@ -10,13 +10,13 @@ class CenterCellCollectionViewFlowLayout: UICollectionViewFlowLayout {
             let halfWidth = collectionViewBounds.size.width * 0.5
             let proposedContentOffsetCenterX = proposedContentOffset.x + halfWidth
             
-            if let attributesForVisibleCells = layoutAttributesForElementsInRect(collectionViewBounds) {
+            if let attributesForVisibleCells = layoutAttributesForElements(in: collectionViewBounds) {
                 
                 var candidateAttributes = UICollectionViewLayoutAttributes()
                 for attributes in attributesForVisibleCells {
                     
                     // == Skip comparison with non-cell items (headers and footers) == //
-                    if attributes.representedElementCategory != UICollectionElementCategory.Cell {
+                    if attributes.representedElementCategory != UICollectionElementCategory.cell {
                         continue
                     }
                     
@@ -32,6 +32,6 @@ class CenterCellCollectionViewFlowLayout: UICollectionViewFlowLayout {
             }
         }
         
-        return super.targetContentOffsetForProposedContentOffset(proposedContentOffset)
+        return super.targetContentOffset(forProposedContentOffset: proposedContentOffset)
     }
 }

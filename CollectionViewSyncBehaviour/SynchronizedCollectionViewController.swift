@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class SynchronizedCollectionViewController: UICollectionViewController {
+open class SynchronizedCollectionViewController: UICollectionViewController {
 
     // MARK: Model
     
@@ -16,45 +16,45 @@ public class SynchronizedCollectionViewController: UICollectionViewController {
 
     // MARK: Synchronized Scrolling
     
-    @IBOutlet public var synchronizedScrollingBehavior: SynchronizedScrollingBehavior!
+    @IBOutlet open var synchronizedScrollingBehavior: SynchronizedScrollingBehavior!
     
     // MARK: UICollectionViewDataSource
     
-    public func reuseIdentifer() -> String {
+    open func reuseIdentifer() -> String {
         return "Cell"
     }
     
-    override public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override open func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return lines.count
     }
     
-    override public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifer(), forIndexPath: indexPath)
-        configure(cell, indexPath: indexPath)
+    override open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifer(), for: indexPath)
+        configure(cell: cell, indexPath: indexPath)
         return cell
     }
 
-    func configure(cell: UICollectionViewCell, indexPath: NSIndexPath) {
+    func configure(cell: UICollectionViewCell, indexPath: IndexPath) {
         // For subclasses to implement
     }
     
     // MARK: UIScrollViewDelegate
     
-    override public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    override open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         behavior.initiatedScrolling = true
     }
     
-    override public func scrollViewDidScroll(scrollView: UIScrollView) {
+    override open func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if behavior.initiatedScrolling {
             synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidScroll(synchronizedScrollingBehavior.collectionView)
         }
     }
     
-    override public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    override open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if behavior.initiatedScrolling {
             synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidEndDecelerating(synchronizedScrollingBehavior.collectionView)
         }
@@ -62,7 +62,7 @@ public class SynchronizedCollectionViewController: UICollectionViewController {
         scrollingDidEnd()
     }
     
-    override public func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
+    override open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidEndScrollingAnimation(synchronizedScrollingBehavior.collectionView)
         scrollingDidEnd()
     }

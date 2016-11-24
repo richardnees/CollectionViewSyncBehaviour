@@ -12,19 +12,19 @@ protocol HasSynchronizedScrolling: UIScrollViewDelegate {
     var behavior: SynchronizedScrollingBehavior { get }
 }
 
-public class SynchronizedScrollingBehavior: NSObject {
-    @IBInspectable public var linearScrolling: Bool = true
-    @IBInspectable public var fastScrollingEnabled: Bool = false {
+open class SynchronizedScrollingBehavior: NSObject {
+    @IBInspectable open var linearScrolling: Bool = true
+    @IBInspectable open var fastScrollingEnabled: Bool = false {
         didSet {
             collectionView?.decelerationRate = fastScrollingEnabled ? UIScrollViewDecelerationRateFast : UIScrollViewDecelerationRateNormal
         }
     }
     
-    @IBOutlet public var collectionView: UICollectionView! {
+    @IBOutlet open var collectionView: UICollectionView! {
         didSet {
             collectionView?.decelerationRate = fastScrollingEnabled ? UIScrollViewDecelerationRateFast : UIScrollViewDecelerationRateNormal
         }
     }
-    public var coordinator: SynchronizedScrollingCoordinator?
-    public var initiatedScrolling: Bool = false
+    open var coordinator: SynchronizedScrollingCoordinator?
+    open var initiatedScrolling: Bool = false
 }

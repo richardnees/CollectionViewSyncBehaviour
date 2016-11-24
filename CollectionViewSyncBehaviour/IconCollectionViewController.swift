@@ -16,10 +16,10 @@ final class IconCollectionViewCell: UICollectionViewCell {
             layer.shadowOpacity = 0.5
             layer.shadowOffset = CGSize(width: 2, height: 0)
             layer.cornerRadius = 10.0
-            layer.borderColor = UIColor.blackColor().CGColor
             layer.borderWidth = 1.0
 
             if let line = line {
+                layer.borderColor = line.textColor.cgColor
                 backgroundColor = line.color
                 titleLabel.text = line.name
                 titleLabel.textColor = line.textColor
@@ -29,23 +29,23 @@ final class IconCollectionViewCell: UICollectionViewCell {
 }
 
 extension IconCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 120.0, height: 120.0)
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        var inset = UIEdgeInsetsZero
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        var inset = UIEdgeInsets.zero
         let horizontalInset = collectionView.bounds.width/2 - 60.0
         inset.left = horizontalInset
         inset.right = horizontalInset
         return inset
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 50
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
 }
@@ -56,26 +56,26 @@ final class IconCollectionViewController: SynchronizedCollectionViewController {
         return "IconCollectionViewCell"
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         collectionViewLayout.invalidateLayout()
         
-        if let selectedIndexPath = collectionView?.indexPathsForVisibleItems().first {
-            coordinator.animateAlongsideTransition({ (context) in
+        if let selectedIndexPath = collectionView?.indexPathsForVisibleItems.first {
+            coordinator.animate(alongsideTransition: { (context) in
                 
             }) { (context) in
-                self.collectionView?.scrollToItemAtIndexPath(selectedIndexPath, atScrollPosition: .CenteredHorizontally, animated: false)
+                self.collectionView?.scrollToItem(at: selectedIndexPath, at: .centeredHorizontally, animated: false)
             }
         }
     }
     
-    override func configure(cell: UICollectionViewCell, indexPath: NSIndexPath) {
+    override func configure(cell: UICollectionViewCell, indexPath: IndexPath) {
         (cell as? IconCollectionViewCell)?.line = lines[indexPath.row]
     }
 
     // MARK: UICollectionViewDelegate
 
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         synchronizedScrollingBehavior.coordinator?.synchronizeSelection(collectionView)
     }
 }

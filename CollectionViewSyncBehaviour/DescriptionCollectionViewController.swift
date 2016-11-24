@@ -8,11 +8,11 @@ class DescriptionCollectionViewCell: UICollectionViewCell {
             layer.shadowOpacity = 0.5
             layer.shadowOffset = CGSize(width: 2, height: 0)
             layer.cornerRadius = 10.0
-            layer.borderColor = UIColor.blackColor().CGColor
             layer.borderWidth = 1.0
             
             if let line = line {
-                backgroundColor = line.color
+                layer.borderColor = line.textColor.cgColor
+                backgroundColor = UIColor.darkText.withAlphaComponent(0.2)
                 titleLabel.text = "\(line.route.0)\n⇆\n\(line.route.1)"
                 titleLabel.textColor = line.textColor
             }
@@ -21,23 +21,23 @@ class DescriptionCollectionViewCell: UICollectionViewCell {
 }
 
 extension DescriptionCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGRectInset(collectionView.bounds, 10, 10).size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.bounds.insetBy(dx: 10, dy: 10).size
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        var inset = UIEdgeInsetsZero
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        var inset = UIEdgeInsets.zero
         let horizontalInset: CGFloat = 10.0
         inset.left = horizontalInset
         inset.right = horizontalInset
         return inset
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 400
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
 }
@@ -48,12 +48,12 @@ class DescriptionCollectionViewController: SynchronizedCollectionViewController 
         return "DescriptionCollectionViewCell"
     }
 
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         collectionViewLayout.invalidateLayout()
     }
     
-    override func configure(cell: UICollectionViewCell, indexPath: NSIndexPath) {
+    override func configure(cell: UICollectionViewCell, indexPath: IndexPath) {
         (cell as? DescriptionCollectionViewCell)?.line = lines[indexPath.row]
     }
 }
