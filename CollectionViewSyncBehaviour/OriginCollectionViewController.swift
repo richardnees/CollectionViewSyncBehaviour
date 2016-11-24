@@ -1,7 +1,7 @@
 import UIKit
 
-final class IconCollectionViewController: SynchronizedCollectionViewController {
-        
+final class OriginCollectionViewController: SynchronizedCollectionViewController {
+    
     override func updateLayout() {
         guard
             let collectionView = collectionView,
@@ -10,24 +10,21 @@ final class IconCollectionViewController: SynchronizedCollectionViewController {
         }
         
         var inset = UIEdgeInsets.zero
-        let horizontalInset = collectionView.bounds.width/2 - 60.0
+        let horizontalInset: CGFloat = 10.0
         inset.left = horizontalInset
         inset.right = horizontalInset
         flowLayout.sectionInset = inset
+        flowLayout.itemSize = collectionView.bounds.insetBy(dx: 10, dy: 10).size
         collectionView.performBatchUpdates(nil, completion: nil)
     }
     
     override func reuseIdentifer() -> String {
-        return IconCollectionViewCell.reuseIdentifier
+        return OriginCollectionViewCell.reuseIdentifier
     }
-        
+    
     override func configure(cell: UICollectionViewCell, indexPath: IndexPath) {
-        (cell as? IconCollectionViewCell)?.line = lines[indexPath.row]
-    }
-
-    // MARK: UICollectionViewDelegate
-
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        synchronizedScrollingBehavior.coordinator?.synchronizeSelection(collectionView)
+        (cell as? OriginCollectionViewCell)?.line = lines[indexPath.row]
     }
 }
+
+

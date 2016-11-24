@@ -1,31 +1,20 @@
 import UIKit
 
-final class BackgroundCollectionViewCell: UICollectionViewCell {
-    
-}
-
-extension BackgroundCollectionViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionView.bounds.size
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.zero
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-}
-
 final class BackgroundCollectionViewController: SynchronizedCollectionViewController {
     
+    override func updateLayout() {
+        guard
+            let collectionView = collectionView,
+            let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+                return
+        }
+        
+        flowLayout.itemSize = self.view.bounds.size
+        collectionView.performBatchUpdates(nil, completion: nil)
+    }
+    
     override func reuseIdentifer() -> String {
-        return "BackgroundCollectionViewCell"
+        return BackgroundCollectionViewCell.reuseIdentifier
     }
     
     override func configure(cell: UICollectionViewCell, indexPath: IndexPath) {

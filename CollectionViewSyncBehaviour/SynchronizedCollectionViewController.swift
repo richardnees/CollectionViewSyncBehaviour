@@ -10,19 +10,28 @@ open class SynchronizedCollectionViewController: UICollectionViewController {
     
     @IBOutlet open var synchronizedScrollingBehavior: SynchronizedScrollingBehavior!
     
+    open override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateLayout()
+    }
+    
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        collectionViewLayout.invalidateLayout()
         
-        if let selectedIndexPath = behavior.coordinator?.focusedIndexPath {
-            coordinator.animate(alongsideTransition: { (context) in
-                
-            }) { (context) in
-                self.collectionView?.scrollToItem(at: selectedIndexPath, at: .centeredHorizontally, animated: false)
+        coordinator.animate(alongsideTransition: { (context) in
+            self.updateLayout()
+            
+            if let selectedIndexPath = self.behavior.coordinator?.focusedIndexPath {
+                self.behavior.coordinator?.scroll(to: selectedIndexPath, animated: false)
             }
+        }) { (context) in
         }
     }
-
+    
+    func updateLayout() {
+        // For subclasses to implement
+    }
+    
     // MARK: UICollectionViewDataSource
     
     open func reuseIdentifer() -> String {
