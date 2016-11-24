@@ -8,9 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "IconCollectionViewCell"
-
-class IconCollectionViewCell: UICollectionViewCell {
+final class IconCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
     
     var line: UBahnLine? {
@@ -27,12 +25,6 @@ class IconCollectionViewCell: UICollectionViewCell {
                 titleLabel.textColor = line.textColor
             }
         }
-    }
-}
-
-extension IconCollectionViewController: HasSynchronizedScrolling {
-    var behavior: SynchronizedScrollingBehavior {
-        return synchronizedScrollingBehavior
     }
 }
 
@@ -58,61 +50,32 @@ extension IconCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-class IconCollectionViewController: UICollectionViewController {
+final class IconCollectionViewController: SynchronizedCollectionViewController {
     
-    @IBOutlet var synchronizedScrollingBehavior: SynchronizedScrollingBehavior!
-
-    var lines = UBahnLine.all
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        collectionView?.decelerationRate = UIScrollViewDecelerationRateFast
+    override func reuseIdentifer() -> String {
+        return "IconCollectionViewCell"
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         collectionViewLayout.invalidateLayout()
         
-        if let selectedIndexPath = collectionView?.indexPathsForSelectedItems()?.first {
+        if let selectedIndexPath = collectionView?.indexPathsForVisibleItems().first {
             coordinator.animateAlongsideTransition({ (context) in
                 
             }) { (context) in
                 self.collectionView?.scrollToItemAtIndexPath(selectedIndexPath, atScrollPosition: .CenteredHorizontally, animated: false)
-                self.synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidScroll(self.synchronizedScrollingBehavior.collectionView)
             }
         }
     }
     
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return lines.count
-    }
-
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! IconCollectionViewCell
-        configure(cell, indexPath: indexPath)
-        return cell
-    }
-    
-    func configure(cell: IconCollectionViewCell, indexPath: NSIndexPath) {
-        cell.line = lines[indexPath.row]
+    override func configure(cell: UICollectionViewCell, indexPath: NSIndexPath) {
+        (cell as? IconCollectionViewCell)?.line = lines[indexPath.row]
     }
 
     // MARK: UICollectionViewDelegate
 
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
-    }
-    
-    // MARK: UIScrollViewDelegate
-    
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidScroll(synchronizedScrollingBehavior.collectionView)
+        synchronizedScrollingBehavior.coordinator?.synchronizeSelection(collectionView)
     }
 }
-

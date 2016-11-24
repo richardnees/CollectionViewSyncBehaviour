@@ -1,15 +1,7 @@
 import UIKit
 
-private let reuseIdentifier = "BackgroundCollectionViewCell"
-
-class BackgroundCollectionViewCell: UICollectionViewCell {
+final class BackgroundCollectionViewCell: UICollectionViewCell {
     
-}
-
-extension BackgroundCollectionViewController: HasSynchronizedScrolling {
-    var behavior: SynchronizedScrollingBehavior {
-        return synchronizedScrollingBehavior
-    }
 }
 
 extension BackgroundCollectionViewController: UICollectionViewDelegateFlowLayout {
@@ -30,15 +22,10 @@ extension BackgroundCollectionViewController: UICollectionViewDelegateFlowLayout
     }
 }
 
-class BackgroundCollectionViewController: UICollectionViewController {
+final class BackgroundCollectionViewController: SynchronizedCollectionViewController {
     
-    @IBOutlet var synchronizedScrollingBehavior: SynchronizedScrollingBehavior!
-    
-    var lines = UBahnLine.all
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        collectionView?.decelerationRate = UIScrollViewDecelerationRateFast
+    override func reuseIdentifer() -> String {
+        return "BackgroundCollectionViewCell"
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -46,29 +33,7 @@ class BackgroundCollectionViewController: UICollectionViewController {
         collectionViewLayout.invalidateLayout()
     }
     
-    // MARK: UICollectionViewDataSource
-    
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return lines.count
-    }
-    
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! BackgroundCollectionViewCell
-        configure(cell, indexPath: indexPath)
-        return cell
-    }
-    
-    func configure(cell: BackgroundCollectionViewCell, indexPath: NSIndexPath) {
-        cell.backgroundColor = lines[indexPath.row].color
-    }
-    
-    // MARK: UIScrollViewDelegate
-    
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidScroll(synchronizedScrollingBehavior.collectionView)
+    override func configure(cell: UICollectionViewCell, indexPath: NSIndexPath) {
+        (cell as? BackgroundCollectionViewCell)?.backgroundColor = lines[indexPath.row].color
     }
 }

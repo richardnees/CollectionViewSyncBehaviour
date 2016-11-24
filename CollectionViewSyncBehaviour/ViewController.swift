@@ -8,7 +8,7 @@ enum SegueIdentifier: String {
 
 class ViewController: UIViewController {
 
-    @IBOutlet var coordinationBehavior: SynchronizedScrollingCoordinationBehavior!
+    @IBOutlet var coordinationBehavior: SynchronizedScrollingCoordinator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {        
         if let synchonizedCollectionViewController = segue.destinationViewController as? HasSynchronizedScrolling {
-            coordinationBehavior.append(synchonizedCollectionViewController.behavior)
+            coordinationBehavior.behaviors.append(synchonizedCollectionViewController.behavior)
         }
     }
 }

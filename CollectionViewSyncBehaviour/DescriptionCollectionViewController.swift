@@ -1,7 +1,5 @@
 import UIKit
 
-private let reuseIdentifier = "DescriptionCollectionViewCell"
-
 class DescriptionCollectionViewCell: UICollectionViewCell {
     @IBOutlet var titleLabel: UILabel!
     
@@ -22,12 +20,6 @@ class DescriptionCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension DescriptionCollectionViewController: HasSynchronizedScrolling {
-    var behavior: SynchronizedScrollingBehavior {
-        return synchronizedScrollingBehavior
-    }
-}
-
 extension DescriptionCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGRectInset(collectionView.bounds, 10, 10).size
@@ -42,7 +34,7 @@ extension DescriptionCollectionViewController: UICollectionViewDelegateFlowLayou
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
-        return 200
+        return 400
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
@@ -50,47 +42,19 @@ extension DescriptionCollectionViewController: UICollectionViewDelegateFlowLayou
     }
 }
 
-class DescriptionCollectionViewController: UICollectionViewController {
-
-    @IBOutlet var synchronizedScrollingBehavior: SynchronizedScrollingBehavior!
-
-    var lines = UBahnLine.all
+class DescriptionCollectionViewController: SynchronizedCollectionViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        collectionView?.decelerationRate = UIScrollViewDecelerationRateFast
+    override func reuseIdentifer() -> String {
+        return "DescriptionCollectionViewCell"
     }
-    
+
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
         collectionViewLayout.invalidateLayout()
     }
-
-    // MARK: UICollectionViewDataSource
     
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return lines.count
-    }
-    
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! DescriptionCollectionViewCell
-        configure(cell, indexPath: indexPath)
-        return cell
-    }
-    
-    func configure(cell: DescriptionCollectionViewCell, indexPath: NSIndexPath) {
-        cell.line = lines[indexPath.row]
-    }
-    
-    // MARK: UIScrollViewDelegate
-    
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidScroll(synchronizedScrollingBehavior.collectionView)
+    override func configure(cell: UICollectionViewCell, indexPath: NSIndexPath) {
+        (cell as? DescriptionCollectionViewCell)?.line = lines[indexPath.row]
     }
 }
 

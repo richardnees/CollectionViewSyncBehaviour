@@ -8,11 +8,23 @@
 
 import UIKit
 
-protocol HasSynchronizedScrolling {
+protocol HasSynchronizedScrolling: UIScrollViewDelegate {
     var behavior: SynchronizedScrollingBehavior { get }
 }
 
-class SynchronizedScrollingBehavior: NSObject {
-    @IBOutlet var collectionView: UICollectionView!
-    var coordinator: SynchronizedScrollingCoordination?
+public class SynchronizedScrollingBehavior: NSObject {
+    @IBInspectable public var linearScrolling: Bool = true
+    @IBInspectable public var fastScrollingEnabled: Bool = false {
+        didSet {
+            collectionView?.decelerationRate = fastScrollingEnabled ? UIScrollViewDecelerationRateFast : UIScrollViewDecelerationRateNormal
+        }
+    }
+    
+    @IBOutlet public var collectionView: UICollectionView! {
+        didSet {
+            collectionView?.decelerationRate = fastScrollingEnabled ? UIScrollViewDecelerationRateFast : UIScrollViewDecelerationRateNormal
+        }
+    }
+    public var coordinator: SynchronizedScrollingCoordinator?
+    public var initiatedScrolling: Bool = false
 }
