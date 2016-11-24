@@ -28,11 +28,6 @@ final class BackgroundCollectionViewController: SynchronizedCollectionViewContro
         return "BackgroundCollectionViewCell"
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        collectionViewLayout.invalidateLayout()
-    }
-    
     override func configure(cell: UICollectionViewCell, indexPath: IndexPath) {
         (cell as? BackgroundCollectionViewCell)?.backgroundColor = lines[indexPath.row].color
     }

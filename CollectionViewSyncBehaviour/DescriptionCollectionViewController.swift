@@ -47,11 +47,6 @@ class DescriptionCollectionViewController: SynchronizedCollectionViewController 
     override func reuseIdentifer() -> String {
         return "DescriptionCollectionViewCell"
     }
-
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        collectionViewLayout.invalidateLayout()
-    }
     
     override func configure(cell: UICollectionViewCell, indexPath: IndexPath) {
         (cell as? DescriptionCollectionViewCell)?.line = lines[indexPath.row]

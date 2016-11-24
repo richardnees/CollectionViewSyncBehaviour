@@ -55,20 +55,7 @@ final class IconCollectionViewController: SynchronizedCollectionViewController {
     override func reuseIdentifer() -> String {
         return "IconCollectionViewCell"
     }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        collectionViewLayout.invalidateLayout()
         
-        if let selectedIndexPath = collectionView?.indexPathsForVisibleItems.first {
-            coordinator.animate(alongsideTransition: { (context) in
-                
-            }) { (context) in
-                self.collectionView?.scrollToItem(at: selectedIndexPath, at: .centeredHorizontally, animated: false)
-            }
-        }
-    }
-    
     override func configure(cell: UICollectionViewCell, indexPath: IndexPath) {
         (cell as? IconCollectionViewCell)?.line = lines[indexPath.row]
     }

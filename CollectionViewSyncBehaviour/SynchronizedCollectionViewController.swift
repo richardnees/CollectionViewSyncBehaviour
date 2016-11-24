@@ -18,6 +18,19 @@ open class SynchronizedCollectionViewController: UICollectionViewController {
     
     @IBOutlet open var synchronizedScrollingBehavior: SynchronizedScrollingBehavior!
     
+    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        collectionViewLayout.invalidateLayout()
+        
+        if let selectedIndexPath = behavior.coordinator?.focusedIndexPath {
+            coordinator.animate(alongsideTransition: { (context) in
+                
+            }) { (context) in
+                self.collectionView?.scrollToItem(at: selectedIndexPath, at: .centeredHorizontally, animated: false)
+            }
+        }
+    }
+
     // MARK: UICollectionViewDataSource
     
     open func reuseIdentifer() -> String {
