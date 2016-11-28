@@ -8,7 +8,7 @@ open class SynchronizedCollectionViewController: UICollectionViewController {
 
     // MARK: Synchronized Scrolling
     
-    @IBOutlet open var synchronizedScrollingBehavior: SynchronizedScrollingBehavior!
+    @IBOutlet var synchronizedScrollingBehavior: SynchronizedScrollingBehavior!
     
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,20 +64,20 @@ open class SynchronizedCollectionViewController: UICollectionViewController {
     
     override open func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if behavior.initiatedScrolling {
-            synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidScroll(synchronizedScrollingBehavior.collectionView)
+            synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidScroll(collectionView: synchronizedScrollingBehavior.collectionView)
         }
     }
     
     override open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if behavior.initiatedScrolling {
-            synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidEndDecelerating(synchronizedScrollingBehavior.collectionView)
+            synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidEndDecelerating(collectionView: synchronizedScrollingBehavior.collectionView)
         }
         behavior.initiatedScrolling = false
         scrollingDidEnd()
     }
     
     override open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidEndScrollingAnimation(synchronizedScrollingBehavior.collectionView)
+        synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidEndScrollingAnimation(collectionView: synchronizedScrollingBehavior.collectionView)
         scrollingDidEnd()
     }
     

@@ -28,6 +28,6 @@ final class IconCollectionViewController: SynchronizedCollectionViewController {
     // MARK: UICollectionViewDelegate
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        synchronizedScrollingBehavior.coordinator?.synchronizeSelection(collectionView)
+        synchronizedScrollingBehavior.coordinator?.synchronizeSelection(collectionView: collectionView)
     }
 }
