@@ -10,6 +10,8 @@
 		950D2E341DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D2E331DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift */; };
 		951F86EE1DE6F57300A2EECF /* SynchronizedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F86ED1DE6F57300A2EECF /* SynchronizedCollectionViewController.swift */; };
 		9523208E1DEC40C20000FE4A /* OriginDestinationFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9523208D1DEC40C20000FE4A /* OriginDestinationFlowLayout.swift */; };
+		953DD8461DECBB2B00AB434B /* LineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DD8451DECBB2B00AB434B /* LineViewController.swift */; };
+		953DD8491DECBB3800AB434B /* Line.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 953DD8471DECBB3800AB434B /* Line.storyboard */; };
 		9592128D1DC225F300C65F0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592128C1DC225F300C65F0E /* AppDelegate.swift */; };
 		9592128F1DC225F300C65F0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592128E1DC225F300C65F0E /* ViewController.swift */; };
 		959212921DC225F400C65F0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959212901DC225F400C65F0E /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 		950D2E331DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedScrollingBehavior.swift; sourceTree = "<group>"; };
 		951F86ED1DE6F57300A2EECF /* SynchronizedCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedCollectionViewController.swift; sourceTree = "<group>"; };
 		9523208D1DEC40C20000FE4A /* OriginDestinationFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OriginDestinationFlowLayout.swift; sourceTree = "<group>"; };
+		953DD8451DECBB2B00AB434B /* LineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineViewController.swift; sourceTree = "<group>"; };
+		953DD8481DECBB3800AB434B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Line.storyboard; sourceTree = "<group>"; };
 		959212891DC225F300C65F0E /* CollectionViewSyncBehaviour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewSyncBehaviour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9592128C1DC225F300C65F0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9592128E1DC225F300C65F0E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +98,108 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		953DD84C1DECDFA700AB434B /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				959212951DC225F400C65F0E /* LaunchScreen.storyboard */,
+			);
+			name = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		953DD84D1DECDFAD00AB434B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				95DDA4FF1DC73F3800AFD5DB /* UBahnLine.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		953DD84E1DECDFB800AB434B /* SynchronizedScrolling */ = {
+			isa = PBXGroup;
+			children = (
+				950D2E331DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift */,
+				95B95FD01DC76F3C00B116C4 /* SynchronizedScrollingCoordinator.swift */,
+				951F86ED1DE6F57300A2EECF /* SynchronizedCollectionViewController.swift */,
+			);
+			name = SynchronizedScrolling;
+			sourceTree = "<group>";
+		};
+		953DD84F1DECDFCC00AB434B /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				95DDA5061DC754FD00AFD5DB /* Background.storyboard */,
+				959212AC1DC2389F00C65F0E /* BackgroundCollectionViewController.swift */,
+				95B4FC8E1DE790AD00F66066 /* BackgroundCollectionViewCell.swift */,
+			);
+			name = Background;
+			sourceTree = "<group>";
+		};
+		953DD8501DECDFD300AB434B /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				95B4FC961DE7947800F66066 /* Icon.storyboard */,
+				959212AE1DC238B200C65F0E /* IconCollectionViewController.swift */,
+				95D27BF01DEC34D500142A03 /* IconCollectionViewFlowLayout.swift */,
+				95B4FC901DE790C500F66066 /* IconCollectionViewCell.swift */,
+			);
+			name = Icon;
+			sourceTree = "<group>";
+		};
+		953DD8511DECDFE100AB434B /* Origin */ = {
+			isa = PBXGroup;
+			children = (
+				95B4FC971DE7948B00F66066 /* Origin.storyboard */,
+				95B4FC9A1DE794B800F66066 /* OriginCollectionViewCell.swift */,
+				95B4FC9B1DE794B800F66066 /* OriginCollectionViewController.swift */,
+			);
+			name = Origin;
+			sourceTree = "<group>";
+		};
+		953DD8521DECDFEC00AB434B /* Destination */ = {
+			isa = PBXGroup;
+			children = (
+				95DDA5011DC7533300AFD5DB /* Destination.storyboard */,
+				95F88D891DC33A6F004B6EDA /* DestinationCollectionViewController.swift */,
+				95B4FC921DE790E300F66066 /* DescriptionCollectionViewCell.swift */,
+			);
+			name = Destination;
+			sourceTree = "<group>";
+		};
+		953DD8531DECDFF300AB434B /* Line */ = {
+			isa = PBXGroup;
+			children = (
+				953DD8471DECBB3800AB434B /* Line.storyboard */,
+				953DD8451DECBB2B00AB434B /* LineViewController.swift */,
+			);
+			name = Line;
+			sourceTree = "<group>";
+		};
+		953DD8541DECE00800AB434B /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				953DD8551DECE00F00AB434B /* FlowLayout */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		953DD8551DECE00F00AB434B /* FlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				959212B01DC2514900C65F0E /* CenterCellCollectionViewFlowLayout.swift */,
+				9523208D1DEC40C20000FE4A /* OriginDestinationFlowLayout.swift */,
+			);
+			name = FlowLayout;
+			sourceTree = "<group>";
+		};
+		953DD8561DECE02200AB434B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				959212901DC225F400C65F0E /* Main.storyboard */,
+				9592128E1DC225F300C65F0E /* ViewController.swift */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		959212801DC225F300C65F0E = {
 			isa = PBXGroup;
 			children = (
@@ -116,29 +222,17 @@
 			isa = PBXGroup;
 			children = (
 				9592128C1DC225F300C65F0E /* AppDelegate.swift */,
-				95DDA4FF1DC73F3800AFD5DB /* UBahnLine.swift */,
-				950D2E331DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift */,
-				95B95FD01DC76F3C00B116C4 /* SynchronizedScrollingCoordinator.swift */,
-				9592128E1DC225F300C65F0E /* ViewController.swift */,
-				951F86ED1DE6F57300A2EECF /* SynchronizedCollectionViewController.swift */,
-				959212B01DC2514900C65F0E /* CenterCellCollectionViewFlowLayout.swift */,
-				95D27BF01DEC34D500142A03 /* IconCollectionViewFlowLayout.swift */,
-				9523208D1DEC40C20000FE4A /* OriginDestinationFlowLayout.swift */,
-				959212901DC225F400C65F0E /* Main.storyboard */,
-				95DDA5061DC754FD00AFD5DB /* Background.storyboard */,
-				959212AC1DC2389F00C65F0E /* BackgroundCollectionViewController.swift */,
-				95B4FC8E1DE790AD00F66066 /* BackgroundCollectionViewCell.swift */,
-				95B4FC961DE7947800F66066 /* Icon.storyboard */,
-				959212AE1DC238B200C65F0E /* IconCollectionViewController.swift */,
-				95B4FC901DE790C500F66066 /* IconCollectionViewCell.swift */,
-				95B4FC971DE7948B00F66066 /* Origin.storyboard */,
-				95B4FC9A1DE794B800F66066 /* OriginCollectionViewCell.swift */,
-				95B4FC9B1DE794B800F66066 /* OriginCollectionViewController.swift */,
-				95DDA5011DC7533300AFD5DB /* Destination.storyboard */,
-				95F88D891DC33A6F004B6EDA /* DestinationCollectionViewController.swift */,
-				95B4FC921DE790E300F66066 /* DescriptionCollectionViewCell.swift */,
+				953DD84C1DECDFA700AB434B /* LaunchScreen */,
+				953DD84D1DECDFAD00AB434B /* Model */,
+				953DD8561DECE02200AB434B /* Main */,
+				953DD84E1DECDFB800AB434B /* SynchronizedScrolling */,
+				953DD8541DECE00800AB434B /* Common */,
+				953DD84F1DECDFCC00AB434B /* Background */,
+				953DD8501DECDFD300AB434B /* Icon */,
+				953DD8511DECDFE100AB434B /* Origin */,
+				953DD8521DECDFEC00AB434B /* Destination */,
+				953DD8531DECDFF300AB434B /* Line */,
 				959212931DC225F400C65F0E /* Assets.xcassets */,
-				959212951DC225F400C65F0E /* LaunchScreen.storyboard */,
 				959212981DC225F400C65F0E /* Info.plist */,
 			);
 			path = CollectionViewSyncBehaviour;
@@ -243,6 +337,7 @@
 				95B4FC941DE7947800F66066 /* Icon.storyboard in Resources */,
 				959212941DC225F400C65F0E /* Assets.xcassets in Resources */,
 				959212921DC225F400C65F0E /* Main.storyboard in Resources */,
+				953DD8491DECBB3800AB434B /* Line.storyboard in Resources */,
 				95B4FC991DE7948B00F66066 /* Origin.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,6 +364,7 @@
 				950D2E341DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift in Sources */,
 				959212AF1DC238B200C65F0E /* IconCollectionViewController.swift in Sources */,
 				95F88D8A1DC33A6F004B6EDA /* DestinationCollectionViewController.swift in Sources */,
+				953DD8461DECBB2B00AB434B /* LineViewController.swift in Sources */,
 				95B4FC9C1DE794B800F66066 /* OriginCollectionViewCell.swift in Sources */,
 				959212AD1DC2389F00C65F0E /* BackgroundCollectionViewController.swift in Sources */,
 				95B4FC931DE790E300F66066 /* DescriptionCollectionViewCell.swift in Sources */,
@@ -300,6 +396,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		953DD8471DECBB3800AB434B /* Line.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				953DD8481DECBB3800AB434B /* Base */,
+			);
+			name = Line.storyboard;
+			sourceTree = "<group>";
+		};
 		959212901DC225F400C65F0E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

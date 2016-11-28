@@ -1,7 +1,7 @@
 import UIKit
 
 public protocol SynchronizedScrollingCoordinatorDelegate {
-    func didChange(_ focusedIndexPath: IndexPath)
+    func didChange(focusedIndexPath: IndexPath)
 }
 
 class SynchronizedScrollingCoordinator: NSObject {
@@ -11,7 +11,7 @@ class SynchronizedScrollingCoordinator: NSObject {
     var focusedIndexPath = IndexPath(item: 0, section: 0) {
         didSet {
             if oldValue != focusedIndexPath {
-                delegate?.didChange(focusedIndexPath)
+                delegate?.didChange(focusedIndexPath: focusedIndexPath)
             }
         }
     }

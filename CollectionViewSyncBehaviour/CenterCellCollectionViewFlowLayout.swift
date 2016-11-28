@@ -2,6 +2,10 @@ import UIKit
 
 class CenterCellCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
+    
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint,
                                                               withScrollingVelocity velocity: CGPoint) -> CGPoint {
         if let collectionView = collectionView {

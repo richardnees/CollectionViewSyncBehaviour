@@ -76,7 +76,8 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="coordinationBehavior" destination="ZDV-lh-wor" id="dts-yK-vWm"/>
+                        <outlet property="coordinator" destination="ZDV-lh-wor" id="dts-yK-vWm"/>
+                        <segue destination="YdO-ve-97A" kind="presentation" identifier="showLine" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="EST-HR-8sA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -91,6 +92,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fd1-nz-dkj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="915.5" y="410"/>
+        </scene>
+        <!--Line-->
+        <scene sceneID="R6r-CT-WNa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Line" id="YdO-ve-97A" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N62-l9-sR5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="882" y="503"/>
         </scene>
         <!--Icon-->
         <scene sceneID="LIx-OR-v3Y">

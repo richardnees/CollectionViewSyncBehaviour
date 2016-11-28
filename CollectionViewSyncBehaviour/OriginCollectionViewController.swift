@@ -1,23 +1,6 @@
 import UIKit
 
 final class OriginCollectionViewController: SynchronizedCollectionViewController {
-    
-    override func updateLayout() {
-        guard
-            let collectionView = collectionView,
-            let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
-                return
-        }
-        
-        var inset = UIEdgeInsets.zero
-        let horizontalInset: CGFloat = 10.0
-        inset.left = horizontalInset
-        inset.right = horizontalInset
-        flowLayout.sectionInset = inset
-        flowLayout.itemSize = collectionView.bounds.insetBy(dx: 10, dy: 10).size
-        collectionView.performBatchUpdates(nil, completion: nil)
-    }
-    
     override func reuseIdentifer() -> String {
         return OriginCollectionViewCell.reuseIdentifier
     }
@@ -27,4 +10,16 @@ final class OriginCollectionViewController: SynchronizedCollectionViewController
     }
 }
 
-
+extension OriginCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.bounds.insetBy(dx: 10, dy: 10).size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        var inset = UIEdgeInsets.zero
+        let horizontalInset: CGFloat = 10.0
+        inset.left = horizontalInset
+        inset.right = horizontalInset
+        return inset
+    }
+}

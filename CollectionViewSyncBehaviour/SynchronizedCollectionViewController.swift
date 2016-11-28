@@ -1,25 +1,25 @@
 import UIKit
 
-open class SynchronizedCollectionViewController: UICollectionViewController {
+class SynchronizedCollectionViewController: UICollectionViewController, UBahnLineMultiplePresentable {
 
     // MARK: Model
     
-    var lines = UBahnLine.all
-
+    var lines: [UBahnLine] = []
+    var uBahnLineSelectable: UBahnLineSelectable?
+    
     // MARK: Synchronized Scrolling
     
     @IBOutlet var synchronizedScrollingBehavior: SynchronizedScrollingBehavior!
     
-    open override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateLayout()
     }
     
-    open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
         coordinator.animate(alongsideTransition: { (context) in
-            self.updateLayout()
+            self.collectionViewLayout.invalidateLayout()
             
             if let selectedIndexPath = self.behavior.coordinator?.focusedIndexPath {
                 self.behavior.coordinator?.scroll(to: selectedIndexPath, animated: false)
@@ -28,25 +28,21 @@ open class SynchronizedCollectionViewController: UICollectionViewController {
         }
     }
     
-    func updateLayout() {
-        // For subclasses to implement
-    }
-    
     // MARK: UICollectionViewDataSource
     
-    open func reuseIdentifer() -> String {
+    func reuseIdentifer() -> String {
         return "Cell"
     }
     
-    override open func numberOfSections(in collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    override open func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return lines.count
     }
     
-    override open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifer(), for: indexPath)
         configure(cell: cell, indexPath: indexPath)
         return cell
@@ -58,17 +54,17 @@ open class SynchronizedCollectionViewController: UICollectionViewController {
     
     // MARK: UIScrollViewDelegate
     
-    override open func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         behavior.initiatedScrolling = true
     }
     
-    override open func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if behavior.initiatedScrolling {
             synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidScroll(collectionView: synchronizedScrollingBehavior.collectionView)
         }
     }
     
-    override open func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if behavior.initiatedScrolling {
             synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidEndDecelerating(collectionView: synchronizedScrollingBehavior.collectionView)
         }
@@ -76,7 +72,7 @@ open class SynchronizedCollectionViewController: UICollectionViewController {
         scrollingDidEnd()
     }
     
-    override open func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    override func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         synchronizedScrollingBehavior.coordinator?.synchronizedCollectionViewDidEndScrollingAnimation(collectionView: synchronizedScrollingBehavior.collectionView)
         scrollingDidEnd()
     }
