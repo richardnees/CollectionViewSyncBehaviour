@@ -1,6 +1,6 @@
 import UIKit
 
-class IconCollectionViewFlowLayout: CenterCellCollectionViewFlowLayout {
+class OriginDestinationFlowLayout: CenterCellCollectionViewFlowLayout {
 
     override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
@@ -23,15 +23,13 @@ class IconCollectionViewFlowLayout: CenterCellCollectionViewFlowLayout {
                 convertedCenterX = collectionViewWidth - convertedCenterX
             }
             
-            var scale = 0.5 + sin(convertedCenterX / collectionViewCenterX)
-            scale = max(1.0, scale)
-            
-            newLayoutAttributes.bounds.size.width = newLayoutAttributes.bounds.size.width * scale
-            newLayoutAttributes.bounds.size.height = newLayoutAttributes.bounds.size.height * scale
+            var alpha = sin(convertedCenterX / collectionViewCenterX)
+            alpha = max(0.1, alpha)
+            newLayoutAttributes.alpha = alpha
             
             chagedLayoutAttributes.append(newLayoutAttributes)
         }
-        
+
         return chagedLayoutAttributes
     }
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		950D2E341DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950D2E331DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift */; };
 		951F86EE1DE6F57300A2EECF /* SynchronizedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951F86ED1DE6F57300A2EECF /* SynchronizedCollectionViewController.swift */; };
+		9523208E1DEC40C20000FE4A /* OriginDestinationFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9523208D1DEC40C20000FE4A /* OriginDestinationFlowLayout.swift */; };
 		9592128D1DC225F300C65F0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592128C1DC225F300C65F0E /* AppDelegate.swift */; };
 		9592128F1DC225F300C65F0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9592128E1DC225F300C65F0E /* ViewController.swift */; };
 		959212921DC225F400C65F0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959212901DC225F400C65F0E /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		950D2E331DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedScrollingBehavior.swift; sourceTree = "<group>"; };
 		951F86ED1DE6F57300A2EECF /* SynchronizedCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchronizedCollectionViewController.swift; sourceTree = "<group>"; };
+		9523208D1DEC40C20000FE4A /* OriginDestinationFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OriginDestinationFlowLayout.swift; sourceTree = "<group>"; };
 		959212891DC225F300C65F0E /* CollectionViewSyncBehaviour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewSyncBehaviour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9592128C1DC225F300C65F0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9592128E1DC225F300C65F0E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -115,18 +117,19 @@
 			children = (
 				9592128C1DC225F300C65F0E /* AppDelegate.swift */,
 				95DDA4FF1DC73F3800AFD5DB /* UBahnLine.swift */,
-				959212B01DC2514900C65F0E /* CenterCellCollectionViewFlowLayout.swift */,
 				950D2E331DC376DD009CFF2A /* SynchronizedScrollingBehavior.swift */,
 				95B95FD01DC76F3C00B116C4 /* SynchronizedScrollingCoordinator.swift */,
 				9592128E1DC225F300C65F0E /* ViewController.swift */,
 				951F86ED1DE6F57300A2EECF /* SynchronizedCollectionViewController.swift */,
+				959212B01DC2514900C65F0E /* CenterCellCollectionViewFlowLayout.swift */,
+				95D27BF01DEC34D500142A03 /* IconCollectionViewFlowLayout.swift */,
+				9523208D1DEC40C20000FE4A /* OriginDestinationFlowLayout.swift */,
 				959212901DC225F400C65F0E /* Main.storyboard */,
 				95DDA5061DC754FD00AFD5DB /* Background.storyboard */,
 				959212AC1DC2389F00C65F0E /* BackgroundCollectionViewController.swift */,
 				95B4FC8E1DE790AD00F66066 /* BackgroundCollectionViewCell.swift */,
 				95B4FC961DE7947800F66066 /* Icon.storyboard */,
 				959212AE1DC238B200C65F0E /* IconCollectionViewController.swift */,
-				95D27BF01DEC34D500142A03 /* IconCollectionViewFlowLayout.swift */,
 				95B4FC901DE790C500F66066 /* IconCollectionViewCell.swift */,
 				95B4FC971DE7948B00F66066 /* Origin.storyboard */,
 				95B4FC9A1DE794B800F66066 /* OriginCollectionViewCell.swift */,
@@ -270,6 +273,7 @@
 				959212AD1DC2389F00C65F0E /* BackgroundCollectionViewController.swift in Sources */,
 				95B4FC931DE790E300F66066 /* DescriptionCollectionViewCell.swift in Sources */,
 				95B4FC8F1DE790AD00F66066 /* BackgroundCollectionViewCell.swift in Sources */,
+				9523208E1DEC40C20000FE4A /* OriginDestinationFlowLayout.swift in Sources */,
 				95B4FC9D1DE794B800F66066 /* OriginCollectionViewController.swift in Sources */,
 				9592128D1DC225F300C65F0E /* AppDelegate.swift in Sources */,
 				95B4FC911DE790C500F66066 /* IconCollectionViewCell.swift in Sources */,
