@@ -32,9 +32,14 @@ class SynchronizedScrollingCoordinator: NSObject {
             newContentOffset?.x = collectionView.contentOffset.x * ratio
             otherCollectionView?.setContentOffset(newContentOffset!, animated: false)
         }
+        updateFocusedIndexPath(for: collectionView)
     }
     
     func synchronizedCollectionViewDidEndDecelerating(collectionView: UICollectionView) {
+        updateFocusedIndexPath(for: collectionView)
+    }
+    
+    func updateFocusedIndexPath(for collectionView: UICollectionView) {
         let potentiallyFocusedIndexPaths = collectionView.indexPathsForVisibleItems.filter { indexPath in
             guard let layoutAttributes = collectionView.collectionViewLayout.layoutAttributesForItem(at: indexPath) else { return false }
             
