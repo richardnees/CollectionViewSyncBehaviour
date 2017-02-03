@@ -13,7 +13,7 @@
         <scene sceneID="YYc-ti-Hg6">
             <objects>
                 <collectionViewController storyboardIdentifier="IconCollectionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Zw-uf-uwB" customClass="IconCollectionViewController" customModule="CollectionViewSyncBehaviour" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="3Q0-PS-9mm">
+                    <collectionView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="3Q0-PS-9mm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>

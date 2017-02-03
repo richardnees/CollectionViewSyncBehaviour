@@ -18,20 +18,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="L1O-NE-eLu" customClass="CenterCellCollectionViewFlowLayout" customModule="CollectionViewSyncBehaviour" customModuleProvider="target">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="271" height="281"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BackgroundCollectionViewCell" id="BbX-R1-wpq" customClass="BackgroundCollectionViewCell" customModule="CollectionViewSyncBehaviour" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="271" height="281"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="271" height="281"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" alpha="0.25" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Xu-rJ-zJM">
+                                            <rect key="frame" x="-50" y="0.0" width="371" height="281"/>
+                                        </imageView>
+                                    </subviews>
                                 </view>
                                 <color key="backgroundColor" red="0.77990549590000002" green="0.25366207600000001" blue="0.197206672" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1Xu-rJ-zJM" secondAttribute="trailing" constant="-50" id="Li5-Sg-iSR"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Xu-rJ-zJM" secondAttribute="bottom" id="O8A-yv-jN8"/>
+                                    <constraint firstItem="1Xu-rJ-zJM" firstAttribute="top" secondItem="BbX-R1-wpq" secondAttribute="top" id="Uyj-bD-S0q"/>
+                                    <constraint firstItem="1Xu-rJ-zJM" firstAttribute="leading" secondItem="BbX-R1-wpq" secondAttribute="leading" constant="-50" id="YFP-Oy-Vak"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="1Xu-rJ-zJM" id="KTC-7s-71K"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -55,7 +69,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1020" y="185"/>
+            <point key="canvasLocation" x="1019.2" y="184.40779610194903"/>
         </scene>
     </scenes>
 </document>

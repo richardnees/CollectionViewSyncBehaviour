@@ -6,7 +6,9 @@ final class BackgroundCollectionViewController: SynchronizedCollectionViewContro
     }
     
     override func configure(cell: UICollectionViewCell, indexPath: IndexPath) {
-        (cell as? BackgroundCollectionViewCell)?.backgroundColor = lines[indexPath.row].color
+        if let cell = cell as? BackgroundCollectionViewCell {
+            cell.uBahnLine = lines[indexPath.row]            
+        }
     }
 }
 
