@@ -293,7 +293,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0810;
-				ORGANIZATIONNAME = VIMN;
+				ORGANIZATIONNAME = "Richard Nees";
 				TargetAttributes = {
 					959212881DC225F300C65F0E = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -552,7 +552,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CollectionViewSyncBehaviour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vimn.CollectionViewSyncBehaviour;
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardnees.CollectionViewSyncBehaviour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -565,7 +565,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CollectionViewSyncBehaviour/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vimn.CollectionViewSyncBehaviour;
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardnees.CollectionViewSyncBehaviour;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -577,7 +577,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CollectionViewSyncBehaviourTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vimn.CollectionViewSyncBehaviourTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardnees.CollectionViewSyncBehaviourTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CollectionViewSyncBehaviour.app/CollectionViewSyncBehaviour";
@@ -590,7 +590,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = CollectionViewSyncBehaviourTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.vimn.CollectionViewSyncBehaviourTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardnees.CollectionViewSyncBehaviourTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CollectionViewSyncBehaviour.app/CollectionViewSyncBehaviour";
